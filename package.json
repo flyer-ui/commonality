@@ -1,6 +1,6 @@
 {
   "name": "@flyer-ui/commonality",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "项目开发中通用到的工具类",
   "main": "lib/index.cjs.js",
   "files": [
@@ -9,9 +9,9 @@
   ],
   "scripts": {
     "test": "jest --no-cache",
-    "build":"rollup -c",
+    "build": "rollup -c",
     "clean": "rm -rf lib",
-    "publish:patch":"npm run clean && npm run test && npm run build && npm version patch && git push --follow-tags && npm publish"
+    "publish:patch": "npm run clean && npm run test && npm run build && npm version patch && git push --follow-tags && npm publish"
   },
   "keywords": [
     "commonality",
