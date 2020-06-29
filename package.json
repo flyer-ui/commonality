@@ -1,8 +1,12 @@
 {
-  "name": "@flyer/commonality",
+  "name": "@flyer-ui/commonality",
   "version": "0.0.1",
-  "description": "flyer的共同点",
-  "main": "index.js",
+  "description": "项目开发中通用到的工具类",
+  "main": "lib/index.cjs.js",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "test": "jest --no-cache"
   },

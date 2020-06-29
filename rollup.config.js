@@ -1,3 +1,10 @@
+/*
+ * @Author: pfzhengd
+ * @Date: 2020-06-29 17:59:04
+ * @LastEditors: pfzhengd
+ * @LastEditTime: 2020-06-29 18:24:13
+ * @Description: file content
+ */ 
 import typescript from 'rollup-plugin-typescript'
 
 export default {
