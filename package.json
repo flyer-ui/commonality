@@ -1,0 +1,24 @@
+{
+  "name": "@flyer/commonality",
+  "version": "0.0.1",
+  "description": "flyer的共同点",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --no-cache"
+  },
+  "keywords": [
+    "commonality",
+    "util"
+  ],
+  "author": "pfzhengd",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "jest": "^26.1.0",
+    "rollup": "^2.18.1",
+    "rollup-plugin-typescript": "^1.0.1",
+    "ts-jest": "^26.1.1",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5"
+  }
+}
