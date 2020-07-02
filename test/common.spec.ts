@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-06-30 12:08:54
  * @Description: file content
  */ 
-import {isPlainObject,hasOwn,extend,deepClone,once} from '../src/index'
+import {isPlainObject,hasOwn,extend,deepClone,once} from '../src/common'
 import {log} from '../src/debug'
 
 test("isPlainObject ?", () => {

@@ -7,29 +7,41 @@
  */ 
 import typescript from 'rollup-plugin-typescript'
 
-export default {
-    input:'./src/index.ts',
-    output:[
-        {
-            format:'umd',
-            name:'commonality',
-            file:'lib/index.umd.js'
-        },
-        {
-            format:'cjs',
-            file:'lib/index.cjs.js'
-        },
-        {
-            format:'es',
-            file:'lib/index.es.js'
+export default ()=>{
+    const template = function(fileName){
+        return {
+            input:`./src/${fileName}.ts`,
+            output:[
+                {
+                    format:'umd',
+                    name:'commonality',
+                    file:`lib/${fileName}.umd.js`
+                },
+                {
+                    format:'cjs',
+                    file:`lib/${fileName}.cjs.js`
+                },
+                {
+                    format:'es',
+                    file:`lib/${fileName}.es.js`
+                }
+            ],
+            plugins:[
+                typescript(
+                    {
+                        exclude:'node_modules/**',
+                        typescript:require('typescript')
+                    }
+                )
+            ]
         }
-    ],
-    plugins:[
-        typescript(
-            {
-                exclude:'node_modules/**',
-                typescript:require('typescript')
-            }
-        )
-    ]
+    }
+
+    const moduleNames = ['index','debug','loader','common']
+    const config = []
+
+    moduleNames.forEach((mouldeName)=>{
+        config.push(template(mouldeName))
+    })
+    return config
 }
