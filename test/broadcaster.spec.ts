@@ -1,4 +1,4 @@
-import Broadcaster from '../src/broadcaster'
+import {Broadcaster} from '../src/broadcaster'
 import {log} from '../src/debug'
 
 test('broadcaster 初始化成功',()=>{

@@ -11,7 +11,7 @@ type TStore = {
     channel:Array<Function>
 } | object
 
-export default (): IBroadcaster => {
+export const Broadcaster = (): IBroadcaster => {
   const store:TStore = {}
 
   return {

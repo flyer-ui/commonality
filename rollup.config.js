@@ -37,7 +37,7 @@ export default ()=>{
         }
     }
 
-    const moduleNames = ['index','debug','loader','common']
+    const moduleNames = ['index','debug','loader','common','broadcaster']
     const config = []
 
     moduleNames.forEach((mouldeName)=>{
