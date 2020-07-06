@@ -1,9 +1,8 @@
-
-import {noop} from './common'
-import {warn} from './debug'
+import { noop } from './common'
+import { warn } from './debug'
 
 // 可动态加载JS/CSS的加载器
-export function loader (paths:string|Array<string>, callback:Function) {
+export function loader(paths: string | Array<string>, callback: Function) {
   if (typeof paths === 'string') {
     paths = [paths]
   }
@@ -13,13 +12,13 @@ export function loader (paths:string|Array<string>, callback:Function) {
     return false
   }
 
-  const cache:object = {}
-  const head:HTMLHeadElement = document.querySelector('head')
+  const cache: object = {}
+  const head: HTMLHeadElement = document.querySelector('head')
 
-  let index:number = 0
+  let index: number = 0
   callback = typeof callback === 'function' ? callback : noop
 
-  paths.forEach((path:string) => {
+  paths.forEach((path: string) => {
     if (cache[path]) {
       return false
     }
@@ -30,8 +29,8 @@ export function loader (paths:string|Array<string>, callback:Function) {
     }
   })
 
-  function loadJS (path:string):void {
-    const script:HTMLScriptElement = document.createElement('script')
+  function loadJS(path: string): void {
+    const script: HTMLScriptElement = document.createElement('script')
     script.src = path
     script.type = 'text/javascript'
     head.appendChild(script)
@@ -43,8 +42,8 @@ export function loader (paths:string|Array<string>, callback:Function) {
     }
     cache[path] = true
   }
-  function loadCSS (path:string):void {
-    const link:HTMLLinkElement = document.createElement('link')
+  function loadCSS(path: string): void {
+    const link: HTMLLinkElement = document.createElement('link')
     link.rel = 'stylesheet'
     link.type = 'text/css'
     link.href = path
@@ -57,7 +56,7 @@ export function loader (paths:string|Array<string>, callback:Function) {
     }
     cache[path] = true
   }
-  function completed ():void {
+  function completed(): void {
     index++
     if (index === paths.length) {
       callback.apply(null)

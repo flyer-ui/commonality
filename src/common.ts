@@ -1,7 +1,7 @@
 const hasOwnProperty = Object.prototype.hasOwnProperty
 const _toString = Object.prototype.toString
 
-export const emptyObject:Readonly<{}> = Object.freeze({})
+export const emptyObject: Readonly<{}> = Object.freeze({})
 
 /**
  * 执行一个空操作
@@ -9,7 +9,7 @@ export const emptyObject:Readonly<{}> = Object.freeze({})
  * @export
  * @param {any} args
  */
-export function noop (...rest:[any]):void {}
+export function noop(...rest: [any]): void {}
 
 /**
  *一个精确添加的方法，思路参考:https://github.com/camsong/blog/issues/9
@@ -19,7 +19,7 @@ export function noop (...rest:[any]):void {}
  * @param {number} [num2=0]
  * @returns
  */
-export function preciseAddition (num1:number = 0, num2:number = 0):number {
+export function preciseAddition(num1: number = 0, num2: number = 0): number {
   const num1Mantissa = (num1.toString().split('.')[1] || '').length
   const num2Mantissa = (num1.toString().split('.')[1] || '').length
   const baseNum = Math.pow(10, Math.max(num1Mantissa, num2Mantissa))
@@ -34,7 +34,7 @@ export function preciseAddition (num1:number = 0, num2:number = 0):number {
  * @param {number} [num2=0]
  * @returns
  */
-export function preciseReduce (num1:number = 0, num2:number = 0):number {
+export function preciseReduce(num1: number = 0, num2: number = 0): number {
   const num1Mantissa = (num1.toString().split('.')[1] || '').length
   const num2Mantissa = (num1.toString().split('.')[1] || '').length
   const baseNum = Math.pow(10, Math.max(num1Mantissa, num2Mantissa))
@@ -48,7 +48,7 @@ export function preciseReduce (num1:number = 0, num2:number = 0):number {
  * @param {*} obj
  * @returns
  */
-export function isPlainObject (obj:object):boolean{
+export function isPlainObject(obj: object): boolean {
   if (_toString.call(obj) === '[object Object]') {
     return true
   }
@@ -63,7 +63,7 @@ export function isPlainObject (obj:object):boolean{
  * @param {String} key
  * @returns Boolean
  */
-export function hasOwn (obj:object, key:string|number|symbol):boolean {
+export function hasOwn(obj: object, key: string | number | symbol): boolean {
   return hasOwnProperty.call(obj, key)
 }
 
@@ -75,7 +75,7 @@ export function hasOwn (obj:object, key:string|number|symbol):boolean {
  * @param {Object} _from
  * @returns Object
  */
-export function extend (to:object, _from:object):object {
+export function extend(to: object, _from: object): object {
   for (const key in _from) {
     to[key] = _from[key]
   }
@@ -89,9 +89,9 @@ export function extend (to:object, _from:object):object {
  * @param {Function} fn
  * @returns Function
  */
-export function once (fn:Function):Function {
+export function once(fn: Function): Function {
   let called = false
-  return function (...rest:[any]):void {
+  return function (...rest: [any]): void {
     if (!called) {
       called = true
       fn.apply(this, rest)
@@ -106,17 +106,17 @@ export function once (fn:Function):Function {
  * @param {any} target
  * @returns any
  */
-export function deepClone (target:object,source:object):object {
+export function deepClone(target: object, source: object): object {
   for (const key in source) {
     const dataType = _toString.call(source[key])
     if (dataType === '[object Object]') {
-        target[key] = {}
-        deepClone(target[key],source[key])
-    }else if(dataType === '[object Array]'){
-        target[key] = []
-        deepClone(target[key],source[key])
+      target[key] = {}
+      deepClone(target[key], source[key])
+    } else if (dataType === '[object Array]') {
+      target[key] = []
+      deepClone(target[key], source[key])
     } else {
-        target[key] = source[key]
+      target[key] = source[key]
     }
   }
   return target
@@ -131,11 +131,15 @@ export function deepClone (target:object,source:object):object {
  * @param {Boolean} immediately
  * @returns
  */
-export function debounce (event:Function = noop, wait:number = 50, immediately:boolean = false):Function {
-  let timer:NodeJS.Timeout | null = null
-  let called:boolean = false
+export function debounce(
+  event: Function = noop,
+  wait: number = 50,
+  immediately: boolean = false
+): Function {
+  let timer: NodeJS.Timeout | null = null
+  let called: boolean = false
 
-  return function (...rest:[any]):void {
+  return function (...rest: [any]): void {
     if (!timer) {
       clearTimeout(timer)
     }
