@@ -20,6 +20,14 @@
     "commonality",
     "util"
   ],
+  "homepage": "https://github.com/flyer-ui/commonality",
+  "bugs": {
+    "url": "https://github.com/flyer-ui/commonality/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flyer-ui/commonality.git"
+  },
   "author": "pfzhengd",
   "license": "MIT",
   "devDependencies": {
