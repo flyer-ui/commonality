@@ -140,8 +140,9 @@ export function debounce(
   let called: boolean = false
 
   return function (...rest: [any]): void {
-    if (!timer) {
+    if (timer) {
       clearTimeout(timer)
+      timer = null
     }
     if (immediately && !called) {
       event.apply(this, [rest])

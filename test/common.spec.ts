@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-06-30 12:08:54
  * @Description: file content
  */ 
-import {isPlainObject,hasOwn,extend,deepClone,once} from '../src/common'
+import {isPlainObject,hasOwn,extend,deepClone,once,debounce} from '../src/common'
 import {log} from '../src/debug'
 
 test("isPlainObject ?", () => {
@@ -56,5 +56,16 @@ test('once ?',()=>{
     fn(1,2)
     fn(1,2)
     expect(counter).toBe(3)
+})
+
+test('debounce ?',done=>{
+    let counter = 0
+    const fn = debounce((a:number,b:number)=>{
+        log(`debounce 我只执行了一次。${counter}`)
+        counter ++
+        done()
+    },1000)
+    const arry = [1,2,3,4]
+    arry.forEach(()=>{log('测试debounce');fn()})
 })
 
