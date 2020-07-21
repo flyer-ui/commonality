@@ -67,6 +67,6 @@ test('debounce ?',done=>{
         done()
     },1000)
     const arry = [1,2,3,4]
-    arry.forEach(()=>{log('测试debounce');fn([1,2])})
+    arry.forEach(()=>{log('测试debounce');fn(1,2)})
 })
 

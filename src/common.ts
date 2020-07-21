@@ -145,11 +145,11 @@ export function debounce(
       timer = null
     }
     if (immediately && !called) {
-      event.apply(this, [rest])
+      event.call(this, ...rest)
       called = true
     } else {
       timer = setTimeout(() => {
-        event.apply(this, ...rest)
+        event.call(this, ...rest)
       }, wait)
     }
   }
