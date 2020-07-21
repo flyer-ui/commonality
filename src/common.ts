@@ -149,7 +149,7 @@ export function debounce(
       called = true
     } else {
       timer = setTimeout(() => {
-        event.apply(this, [rest])
+        event.apply(this, ...rest)
       }, wait)
     }
   }

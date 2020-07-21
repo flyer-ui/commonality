@@ -63,9 +63,10 @@ test('debounce ?',done=>{
     const fn = debounce((a:number,b:number)=>{
         log(`debounce 我只执行了一次。${counter}`)
         counter ++
+        log('a + b = ',String(a+b))
         done()
     },1000)
     const arry = [1,2,3,4]
-    arry.forEach(()=>{log('测试debounce');fn()})
+    arry.forEach(()=>{log('测试debounce');fn([1,2])})
 })
 
