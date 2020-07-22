@@ -1,0 +1,53 @@
+{
+  "name": "@flyer-ui/commonality",
+  "version": "0.0.10",
+  "description": "项目开发中通用到的工具类",
+  "main": "lib/index.cjs.js",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "test": "jest --no-cache",
+    "build": "rollup -c",
+    "clean": "rm -rf lib",
+    "build:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "validate": "node ./node_modules/@flyer-ui/validate-commit-message",
+    "commit": "git add . && git cz",
+    "publish:patch": "npm run clean && npm run test && npm run build && npm version patch -m 'chore: Upgrade to %s for reasons' && git push --follow-tags && npm publish"
+  },
+  "keywords": [
+    "commonality",
+    "util"
+  ],
+  "homepage": "https://github.com/flyer-ui/commonality",
+  "bugs": {
+    "url": "https://github.com/flyer-ui/commonality/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flyer-ui/commonality.git"
+  },
+  "author": "pfzhengd",
+  "license": "MIT",
+  "devDependencies": {
+    "@flyer-ui/validate-commit-message": "^0.0.1",
+    "@types/jest": "^26.0.3",
+    "cz-conventional-changelog": "^3.2.0",
+    "ghooks": "^2.0.4",
+    "jest": "^26.1.0",
+    "rollup": "^2.18.1",
+    "rollup-plugin-typescript": "^1.0.1",
+    "ts-jest": "^26.1.1",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5"
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "npm run validate"
+    },
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
