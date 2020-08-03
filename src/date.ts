@@ -24,7 +24,7 @@ export function formatDate(format:string, data:Date|string) {
     error('format is not defined.')
     return false
   }
-  const date:TDate = this.getDate(data)
+  const date:TDate = getDate(data)
   return format
     .replace(/yyyy/gi, date.year.toString())
     .replace(/mm/, fullTime(date.month))
