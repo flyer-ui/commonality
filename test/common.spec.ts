@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-06-30 12:08:54
  * @Description: file content
  */ 
-import {isPlainObject,hasOwn,extend,deepClone,once,debounce} from '../src/common'
+import {isPlainObject,hasOwn,extend,deepClone,once,debounce,isString} from '../src/common'
 import {log} from '../src/debug'
 
 test("isPlainObject ?", () => {
@@ -68,5 +68,12 @@ test('debounce ?',done=>{
     },1000)
     const arry = [1,2,3,4]
     arry.forEach(()=>{log('测试debounce');fn(1,2)})
+})
+
+test('isString ?',done=>{
+    expect(isString({})).toBe(false)
+    expect(isString(true)).toBe(false)
+    expect(isString('')).toBe(true)
+    done()
 })
 

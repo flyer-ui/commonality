@@ -154,3 +154,13 @@ export function debounce(
     }
   }
 }
+
+/**
+ *
+ * 判断是否是 string 对象
+ * @param {any} obj
+ * @returns
+ */
+export function isString(obj:any):Boolean {
+  return typeof obj === 'string'
+}
