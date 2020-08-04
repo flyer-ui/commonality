@@ -1,5 +1,8 @@
+import {error} from './debug'
+
 const hasOwnProperty = Object.prototype.hasOwnProperty
 const _toString = Object.prototype.toString
+const slice = Array.prototype.slice
 
 export const emptyObject: Readonly<{}> = Object.freeze({})
 
@@ -161,6 +164,33 @@ export function debounce(
  * @param {any} obj
  * @returns
  */
-export function isString(obj:any):Boolean {
+export function isString(obj: any): Boolean {
   return typeof obj === 'string'
+}
+
+/**
+ * @description 格式化字占位符，例如：”{1}，{2}“
+ * @author pfzheng
+ * @date 2020-08-04
+ * @export
+ * @returns {(string | undefined)}
+ */
+export function format(...rest:Array<any>): string | undefined {
+  const args: Array<any> = slice.call(rest)
+  const len: number = args.length
+  if (len > 1) {
+    let str: string = args[0]
+
+    if(!isString(str)){
+      error('The first value in the parameters must be a string type.')
+      return undefined
+    }
+
+    for (let i: number = 1; i < len; i++) {
+      str = str.replace(new RegExp('\\{' + i + '\\}', 'g'), args[i])
+    }
+    return str
+  } else {
+    return undefined
+  }
 }
