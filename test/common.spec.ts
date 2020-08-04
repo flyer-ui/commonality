@@ -83,7 +83,7 @@ test('format ?',done=>{
     expect(format('{1},{2}','a','b')).toBe('a,b')
     expect(format('{1},{2}')).toBe(undefined)
     expect(format(1,2)).toBe(undefined)
-    expect(format('{1}',1)).toBe('1')
+    expect(format('{0}',1)).toBe('{0}')
     done()
 })
 

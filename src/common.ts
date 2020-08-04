@@ -1,8 +1,8 @@
 import {error} from './debug'
 
-const hasOwnProperty = Object.prototype.hasOwnProperty
-const _toString = Object.prototype.toString
-const slice = Array.prototype.slice
+export const hasOwnProperty = Object.prototype.hasOwnProperty
+export const _toString = Object.prototype.toString
+export const slice = Array.prototype.slice
 
 export const emptyObject: Readonly<{}> = Object.freeze({})
 
