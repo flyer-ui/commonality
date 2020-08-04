@@ -1,11 +1,13 @@
-/*
- * @Author: pfzhengd
- * @Date: 2020-06-29 17:59:04
- * @LastEditors: pfzhengd
- * @LastEditTime: 2020-06-30 12:08:54
- * @Description: file content
- */ 
-import {isPlainObject,hasOwn,extend,deepClone,once,debounce,isString} from '../src/common'
+import {
+    isPlainObject,
+    hasOwn,
+    extend,
+    deepClone,
+    once,
+    debounce,
+    isString,
+    format
+} from '../src/common'
 import {log} from '../src/debug'
 
 test("isPlainObject ?", () => {
@@ -74,6 +76,14 @@ test('isString ?',done=>{
     expect(isString({})).toBe(false)
     expect(isString(true)).toBe(false)
     expect(isString('')).toBe(true)
+    done()
+})
+
+test('format ?',done=>{
+    expect(format('{1},{2}','a','b')).toBe('a,b')
+    expect(format('{1},{2}')).toBe(undefined)
+    expect(format(1,2)).toBe(undefined)
+    expect(format('{0}',1)).toBe('{0}')
     done()
 })
 
