@@ -162,7 +162,7 @@ export function getDiffTimeDescription(
     if (texts.length === items.length) {
       const subItems = items.slice(index, num)
       const subTexts = texts.slice(index, num).map((text,index)=>{
-         text = text.replace(/{\d+}/,(index+1).toString())
+         text = text.replace(/{\d+}/,(`{${index+1}}`).toString())
          return text
       })
       return format(subTexts.join(''),...subItems)

@@ -55,7 +55,8 @@ test('getDiffTime ?',done=>{
 
 test('getDiffTimeDescription ?',done=>{
   expect(getDiffTimeDescription('1986-07-03 15:03:23','2020-08-03 18:02:01')).toBe('34年1月1日3时58分38秒')
-  expect(getDiffTimeDescription('2019-07-03 15:03:23','2020-08-03 18:02:01',2)).toBe('1年2月')
+  expect(getDiffTimeDescription('2019-07-03 15:03:23','2020-08-03 18:02:01',2)).toBe('1年1月')
+  console.log(getDiffTimeDescription('2016-09-27T15:59:17.000Z',new Date(),2))
   done()
 })
 
