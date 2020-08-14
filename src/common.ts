@@ -1,4 +1,4 @@
-import {error} from './debug'
+import { error } from './debug'
 
 export const hasOwnProperty = Object.prototype.hasOwnProperty
 export const _toString = Object.prototype.toString
@@ -175,13 +175,13 @@ export function isString(obj: any): Boolean {
  * @export
  * @returns {(string | undefined)}
  */
-export function format(...rest:Array<any>): string | undefined {
+export function format(...rest: Array<any>): string | undefined {
   const args: Array<any> = slice.call(rest)
   const len: number = args.length
   if (len > 1) {
     let str: string = args[0]
 
-    if(!isString(str)){
+    if (!isString(str)) {
       error('The first value in the parameters must be a string type.')
       return undefined
     }
@@ -193,4 +193,8 @@ export function format(...rest:Array<any>): string | undefined {
   } else {
     return undefined
   }
+}
+
+export function formatCurrency(value: string | number, unit: string = '￥') {
+  return `${unit} ${value}`.replace(/\B(?=(\d{3})+(?!\d))/gi, ',')
 }

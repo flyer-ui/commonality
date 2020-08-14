@@ -6,7 +6,8 @@ import {
     once,
     debounce,
     isString,
-    format
+    format,
+    formatCurrency
 } from '../src/common'
 import {log} from '../src/debug'
 
@@ -84,6 +85,16 @@ test('format ?',done=>{
     expect(format('{1},{2}')).toBe(undefined)
     expect(format(1,2)).toBe(undefined)
     expect(format('{0}',1)).toBe('{0}')
+    done()
+})
+
+test('formatCurrency',done=>{
+    expect(formatCurrency(142)).toBe('￥ 142')
+    expect(formatCurrency(13542)).toBe('￥ 13,542')
+    expect(formatCurrency(123242)).toBe('￥ 123,242')
+    expect(formatCurrency(123456789)).toBe('￥ 123,456,789')
+    expect(formatCurrency(123456789,'$')).toBe('$ 123,456,789')
+    expect(formatCurrency('123456789','$')).toBe('$ 123,456,789')
     done()
 })
 
