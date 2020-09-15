@@ -24,7 +24,7 @@ export function noop(...rest: [any]): void {}
  */
 export function preciseAddition(num1: number = 0, num2: number = 0): number {
   const num1Mantissa = (num1.toString().split('.')[1] || '').length
-  const num2Mantissa = (num1.toString().split('.')[1] || '').length
+  const num2Mantissa = (num2.toString().split('.')[1] || '').length
   const baseNum = Math.pow(10, Math.max(num1Mantissa, num2Mantissa))
   return (num1 * baseNum + num2 * baseNum) / baseNum
 }
@@ -39,7 +39,7 @@ export function preciseAddition(num1: number = 0, num2: number = 0): number {
  */
 export function preciseReduce(num1: number = 0, num2: number = 0): number {
   const num1Mantissa = (num1.toString().split('.')[1] || '').length
-  const num2Mantissa = (num1.toString().split('.')[1] || '').length
+  const num2Mantissa = (num2.toString().split('.')[1] || '').length
   const baseNum = Math.pow(10, Math.max(num1Mantissa, num2Mantissa))
   return (num1 * baseNum - num2 * baseNum) / baseNum
 }

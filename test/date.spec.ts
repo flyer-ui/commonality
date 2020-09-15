@@ -33,14 +33,23 @@ test("getDate ?", () => {
         seconds: 23
       }
     expect(getDate(new Date('2020-08-02 15:00:23'))).toStrictEqual(result2)
+
+    const date = new Date()
+    let result3:TDate = {
+        years: date.getFullYear(),
+        months: date.getMonth()+1,
+        days: date.getDate(),
+        hours: date.getHours(),
+        minutes: date.getMinutes(),
+        seconds: date.getSeconds()
+    }
+    expect(getDate(date.getTime())).toStrictEqual(result3)
     
 });
 
 test("formatDate ?", () => {
-    let param = '2020-08-02 15:03:22'
-    expect(formatDate('yyyy-mm-dd','2020-08-02')).toBe('2020-08-02')
-
-    expect(formatDate('yyyy-mm-dd hh:MM:ss','2020-08-02 15:03:22')).toBe('2020-08-02 15:03:22')
+    expect(formatDate('yyyy-MM-dd','2020-08-02')).toBe('2020-08-02')
+    expect(formatDate('yyyy-MM-dd hh:mm:ss','2020-08-02 15:03:22')).toBe('2020-08-02 15:03:22')
 });
 
 test('getDiffTime ?',done=>{
