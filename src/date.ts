@@ -1,5 +1,5 @@
 import { error } from './debug'
-import { isString, hasOwn ,format} from './common'
+import { isString, hasOwn, format } from './common'
 
 export type TDate = {
   years: string | number
@@ -19,7 +19,10 @@ export type TDate = {
  * @param {(Date|string)} data
  * @returns
  */
-export function formatDate(format: string, data: Date | string | TDate) {
+export function formatDate(
+  format: string,
+  data: Date | string | number | TDate
+) {
   if (typeof format !== 'string') {
     error('format is not defined.')
     return false
@@ -29,10 +32,10 @@ export function formatDate(format: string, data: Date | string | TDate) {
     : getDate(data as Date | string)
   return format
     .replace(/yyyy/gi, date.years.toString())
-    .replace(/mm/, fullTime(date.months))
+    .replace(/MM/, fullTime(date.months))
     .replace(/dd/gi, fullTime(date.days))
     .replace(/hh/gi, fullTime(date.hours))
-    .replace(/MM/, fullTime(date.minutes))
+    .replace(/mm/, fullTime(date.minutes))
     .replace(/ss/gi, fullTime(date.seconds))
 }
 
@@ -44,8 +47,8 @@ export function formatDate(format: string, data: Date | string | TDate) {
  * @param {(string|Date)} param
  * @returns {TDate}
  */
-export function getDate(param: string | Date): TDate {
-  const date: Date = isString(param)
+export function getDate(param: string | number | Date): TDate {
+  const date: Date = (isString(param) || typeof param === 'number')
     ? new Date(param)
     : (param as Date) || new Date()
   return {
@@ -161,11 +164,11 @@ export function getDiffTimeDescription(
     })
     if (texts.length === items.length) {
       const subItems = items.slice(index, num)
-      const subTexts = texts.slice(index, num).map((text,index)=>{
-         text = text.replace(/{\d+}/,(`{${index+1}}`).toString())
-         return text
+      const subTexts = texts.slice(index, num).map((text, index) => {
+        text = text.replace(/{\d+}/, `{${index + 1}}`.toString())
+        return text
       })
-      return format(subTexts.join(''),...subItems)
+      return format(subTexts.join(''), ...subItems)
     } else {
       error(`The parameter name "template" is invalid. 
       If you set the parameter name "num",the parameter name "template" 
