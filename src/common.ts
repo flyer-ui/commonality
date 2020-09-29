@@ -15,36 +15,6 @@ export const emptyObject: Readonly<{}> = Object.freeze({})
 export function noop(...rest: [any]): void {}
 
 /**
- *一个精确添加的方法，思路参考:https://github.com/camsong/blog/issues/9
- *
- * @export
- * @param {number} [num1=0]
- * @param {number} [num2=0]
- * @returns
- */
-export function preciseAddition(num1: number = 0, num2: number = 0): number {
-  const num1Mantissa = (num1.toString().split('.')[1] || '').length
-  const num2Mantissa = (num2.toString().split('.')[1] || '').length
-  const baseNum = Math.pow(10, Math.max(num1Mantissa, num2Mantissa))
-  return (num1 * baseNum + num2 * baseNum) / baseNum
-}
-
-/**
- *一个精确减法的方法，思路参考:https://github.com/camsong/blog/issues/9
- *
- * @export
- * @param {number} [num1=0]
- * @param {number} [num2=0]
- * @returns
- */
-export function preciseReduce(num1: number = 0, num2: number = 0): number {
-  const num1Mantissa = (num1.toString().split('.')[1] || '').length
-  const num2Mantissa = (num2.toString().split('.')[1] || '').length
-  const baseNum = Math.pow(10, Math.max(num1Mantissa, num2Mantissa))
-  return (num1 * baseNum - num2 * baseNum) / baseNum
-}
-
-/**
  * 判断对象是否是纯粹的对象类型
  *
  * @export
@@ -139,20 +109,21 @@ export function debounce(
   wait: number = 50,
   immediately: boolean = false
 ): Function {
-  let timer: NodeJS.Timeout | null = null
+  let timeout: NodeJS.Timeout | null = null
   let called: boolean = false
 
   return function (...rest: [any]): void {
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
+    if (timeout) {
+      clearTimeout(timeout)
+      timeout = null
     }
     if (immediately && !called) {
       event.call(this, ...rest)
       called = true
     } else {
-      timer = setTimeout(() => {
+      timeout = setTimeout(() => {
         event.call(this, ...rest)
+        timeout = null
       }, wait)
     }
   }
