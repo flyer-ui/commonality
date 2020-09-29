@@ -1,6 +1,6 @@
 {
   "name": "@flyer-ui/commonality",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "项目开发中通用到的工具类",
   "main": "lib/index.cjs.js",
   "files": [
