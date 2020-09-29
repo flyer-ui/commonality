@@ -7,9 +7,7 @@ import {
     debounce,
     isString,
     format,
-    formatCurrency,
-    preciseAddition,
-    preciseReduce
+    formatCurrency
 } from '../src/common'
 import {log} from '../src/debug'
 
@@ -97,18 +95,6 @@ test('formatCurrency',done=>{
     expect(formatCurrency(123456789)).toBe('￥ 123,456,789')
     expect(formatCurrency(123456789,'$')).toBe('$ 123,456,789')
     expect(formatCurrency('123456789','$')).toBe('$ 123,456,789')
-    done()
-})
-
-test('preciseAddition',done=>{
-    expect(preciseAddition(0.1,0.2)).toBe(0.3)
-    expect(preciseAddition(0.7,0.1)).toBe(0.8)
-    done()
-})
-
-test('preciseReduce',done=>{
-    expect(preciseReduce(1.5,1.2)).toBe(0.3)
-    expect(preciseReduce(0.3,0.2)).toBe(0.1)
     done()
 })
 
