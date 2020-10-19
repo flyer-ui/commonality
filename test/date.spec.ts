@@ -59,13 +59,17 @@ test('getDiffTime ?',done=>{
   expect(getDiffTime('2019-02-03','2020-03-03')).toStrictEqual(
     { years: 1, months: 0, days: 28, hours: 0, minutes: 0, seconds: 0 }
   )
+  expect(getDiffTime('','',7286)).toStrictEqual(
+    { years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 7 }
+  )
   done()
 })
 
 test('getDiffTimeDescription ?',done=>{
   expect(getDiffTimeDescription('1986-07-03 15:03:23','2020-08-03 18:02:01')).toBe('34年1月1日3时58分38秒')
-  expect(getDiffTimeDescription('2019-07-03 15:03:23','2020-08-03 18:02:01',2)).toBe('1年1月')
-  console.log(getDiffTimeDescription('2016-09-27T15:59:17.000Z',new Date(),2))
+  expect(getDiffTimeDescription('2019-07-03 15:03:23','2020-08-03 18:02:01',0,2)).toBe('1年1月')
+  console.log(getDiffTimeDescription('2016-09-27T15:59:17.000Z',new Date(),0,2))
+  expect(getDiffTimeDescription('','',7286,2)).toBe('0分7秒')
   done()
 })
 

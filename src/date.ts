@@ -87,7 +87,7 @@ export function fullTime(time: string | number): string {
  * @param {(string|Date)} end
  * @returns {string}
  */
-export function getDiffTime(start: string | Date, end: string | Date): TDate {
+export function getDiffTime(start?: string | Date, end?: string | Date,diffTime:number = 0): TDate {
   if (isString(start)) {
     start = new Date(start)
   }
@@ -101,7 +101,9 @@ export function getDiffTime(start: string | Date, end: string | Date): TDate {
 
   const intervalMonth = 365.242199 / 12
 
-  const diffTime = end.getTime() - start.getTime()
+  if(diffTime === 0){
+    diffTime = end.getTime() - start.getTime()
+  }
 
   const diffTimeYears = Math.floor(
     diffTime / (12 * intervalMonth * 24 * 60 * 60 * 1000)
@@ -145,12 +147,13 @@ export function getDiffTime(start: string | Date, end: string | Date): TDate {
  * @returns {string}
  */
 export function getDiffTimeDescription(
-  start: string | Date,
-  end: string | Date,
+  start?: string | Date,
+  end?: string | Date,
+  diffTime:number = 0,
   num?: number,
   template?: string
 ): string | undefined {
-  const date: TDate = getDiffTime(start, end)
+  const date: TDate = getDiffTime(start, end,diffTime)
   template = template || '{1}年{2}月{3}日{4}时{5}分{6}秒'
   const items: Array<number> = []
   Object.keys(date).forEach((key) => {
