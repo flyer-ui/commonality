@@ -94,6 +94,8 @@ test('formatCurrency',done=>{
     expect(formatCurrency(123242)).toBe('￥ 123,242')
     expect(formatCurrency(123456789)).toBe('￥ 123,456,789')
     expect(formatCurrency(123456789,'$')).toBe('$ 123,456,789')
+    expect(formatCurrency('123456789.00','$')).toBe('$ 123,456,789.00')
+    expect(formatCurrency('123456789.0000','$')).toBe('$ 123,456,789.0000')
     expect(formatCurrency('123456789','$')).toBe('$ 123,456,789')
     done()
 })
