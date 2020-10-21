@@ -172,5 +172,6 @@ export function format(...rest: Array<any>): string | undefined {
  * @param unit 格式化货币的单元，默认是中国货币符号￥
  */
 export function formatCurrency(value: string | number, unit: string = '￥') {
-  return `${unit} ${value}`.replace(/\B(?=(\d{3})+(?!\d))/gi, ',')
+  const [integer,decimal] = value.toString().split('.')
+  return `${unit} ${integer}`.replace(/\B(?=(\d{3})+(?!\d))/gi, ',') + `${decimal?('.'+decimal):''}`
 }
