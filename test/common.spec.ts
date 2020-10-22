@@ -89,6 +89,7 @@ test('format ?',done=>{
 })
 
 test('formatCurrency',done=>{
+    expect(formatCurrency(undefined)).toBe('')
     expect(formatCurrency(142)).toBe('￥ 142')
     expect(formatCurrency(13542)).toBe('￥ 13,542')
     expect(formatCurrency(123242)).toBe('￥ 123,242')
