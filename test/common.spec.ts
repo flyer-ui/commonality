@@ -90,6 +90,9 @@ test('format ?',done=>{
 
 test('formatCurrency',done=>{
     expect(formatCurrency(undefined)).toBe('')
+    expect(formatCurrency(null)).toBe('')
+    expect(formatCurrency(0)).toBe('￥ 0')
+    expect(formatCurrency(undefined)).toBe('')
     expect(formatCurrency(142)).toBe('￥ 142')
     expect(formatCurrency(13542)).toBe('￥ 13,542')
     expect(formatCurrency(123242)).toBe('￥ 123,242')
