@@ -173,7 +173,7 @@ export function format(...rest: Array<any>): string | undefined {
  */
 export function formatCurrency(value: string | number, unit: string = '￥') {
   // 如果值的类型为undefined / null 直接返回空字符串。
-  if(!value){
+  if(value === undefined || value === null){
     return ''
   }
   const [integer,decimal] = value.toString().split('.')
