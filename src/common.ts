@@ -176,8 +176,10 @@ export function formatCurrency(value: string | number, unit: string = '￥') {
   if(value === undefined || value === null){
     return ''
   }
+  if(typeof value === 'string'){
+    value = parseFloat(value)
+  }
+  value = value.toFixed(2)
   let [integer,decimal] = value.toString().split('.')
-  decimal = decimal?('.'+decimal):'.00'
-  decimal = decimal.length === 2 ? (decimal+'0'):decimal
-  return `${unit} ${integer}`.replace(/\B(?=(\d{3})+(?!\d))/gi, ',') + `${decimal}`
+  return `${unit} ${integer}`.replace(/\B(?=(\d{3})+(?!\d))/gi, ',') + `.${decimal}`
 }
