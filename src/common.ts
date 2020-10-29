@@ -176,6 +176,8 @@ export function formatCurrency(value: string | number, unit: string = '￥') {
   if(value === undefined || value === null){
     return ''
   }
-  const [integer,decimal] = value.toString().split('.')
-  return `${unit} ${integer}`.replace(/\B(?=(\d{3})+(?!\d))/gi, ',') + `${decimal?('.'+decimal):''}`
+  let [integer,decimal] = value.toString().split('.')
+  decimal = decimal?('.'+decimal):'.00'
+  decimal = decimal.length === 2 ? (decimal+'0'):decimal
+  return `${unit} ${integer}`.replace(/\B(?=(\d{3})+(?!\d))/gi, ',') + `${decimal}`
 }

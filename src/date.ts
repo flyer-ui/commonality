@@ -154,7 +154,7 @@ export function getDiffTimeDescription(
   template?: string
 ): string | undefined {
   const date: TDate = getDiffTime(start, end,diffTime)
-  template = template || '{1}年{2}月{3}日{4}时{5}分{6}秒'
+  template = template || '{1}年{2}个月{3}日{4}小时{5}分{6}秒'
   const items: Array<number> = []
   Object.keys(date).forEach((key) => {
     items.push(date[key])
