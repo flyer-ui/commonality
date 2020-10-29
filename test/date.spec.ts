@@ -66,10 +66,10 @@ test('getDiffTime ?',done=>{
 })
 
 test('getDiffTimeDescription ?',done=>{
-  expect(getDiffTimeDescription('1986-07-03 15:03:23','2020-08-03 18:02:01')).toBe('34年1月1日3时58分38秒')
-  expect(getDiffTimeDescription('2019-07-03 15:03:23','2020-08-03 18:02:01',0,2)).toBe('1年1月')
+  expect(getDiffTimeDescription('1986-07-03 15:03:23','2020-08-03 18:02:01')).toBe('34年1个月1日3小时58分38秒')
+  expect(getDiffTimeDescription('2019-07-03 15:03:23','2020-08-03 18:02:01',0,2)).toBe('1年1个月')
   console.log(getDiffTimeDescription('2016-09-27T15:59:17.000Z',new Date(),0,2))
-  expect(getDiffTimeDescription('','',7286,)).toBe('0年0月0日0时0分7秒')
+  expect(getDiffTimeDescription('','',7286,)).toBe('0年0个月0日0小时0分7秒')
   done()
 })
 
