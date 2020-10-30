@@ -1,5 +1,5 @@
 import { error } from './debug'
-import { isString, hasOwn, format } from './common'
+import { isString, hasOwn, format,_toString } from './common'
 
 export type TDate = {
   years: string | number
@@ -23,6 +23,9 @@ export function formatDate(
   format: string,
   data: Date | string | number | TDate
 ) {
+  if(_toString.call(data) === '[object Null]' || _toString.call(data) === '[object Undefined]'){
+    return data
+  }
   if (typeof format !== 'string') {
     error('format is not defined.')
     return false

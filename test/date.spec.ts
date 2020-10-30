@@ -48,6 +48,8 @@ test("getDate ?", () => {
 });
 
 test("formatDate ?", () => {
+    expect(formatDate('yyyy-MM-dd',null)).toBe(null)
+    expect(formatDate('yyyy-MM-dd',undefined)).toBe(undefined)
     expect(formatDate('yyyy-MM-dd','2020-08-02')).toBe('2020-08-02')
     expect(formatDate('yyyy-MM-dd hh:mm:ss','2020-08-02 15:03:22')).toBe('2020-08-02 15:03:22')
 });
