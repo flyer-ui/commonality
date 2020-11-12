@@ -7,7 +7,8 @@ import {
     debounce,
     isString,
     format,
-    formatCurrency
+    formatCurrency,
+    randomNumber
 } from '../src/common'
 import {log} from '../src/debug'
 
@@ -102,6 +103,14 @@ test('formatCurrency',done=>{
     expect(formatCurrency('123456789.00','$')).toBe('$ 123,456,789.00')
     expect(formatCurrency('123456789.0000','$')).toBe('$ 123,456,789.00')
     expect(formatCurrency('123456789','$')).toBe('$ 123,456,789.00')
+    done()
+})
+
+test('randomNumber',done=>{
+    for(let i=0;i<10000;i++){
+        const result = randomNumber() !== randomNumber()
+        expect(result).toBe(true)
+    }
     done()
 })
 
