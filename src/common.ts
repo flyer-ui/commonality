@@ -171,7 +171,7 @@ export function format(...rest: Array<any>): string | undefined {
  * @param value 要进行货币格式化的数字（支持String类型和Number类型）
  * @param unit 格式化货币的单元，默认是中国货币符号￥
  */
-export function formatCurrency(value: string | number, unit: string = '￥') {
+export function formatCurrency(value: string | number, unit: string = '￥'):string{
   // 如果值的类型为undefined / null 直接返回空字符串。
   if(value === undefined || value === null){
     return ''
@@ -182,4 +182,11 @@ export function formatCurrency(value: string | number, unit: string = '￥') {
   value = value.toFixed(2)
   let [integer,decimal] = value.toString().split('.')
   return `${unit} ${integer}`.replace(/\B(?=(\d{3})+(?!\d))/gi, ',') + `.${decimal}`
+}
+
+/**
+ * 可以生成并返回一个随机数的函数
+ */
+export function randomNumber():number{
+  return new Date().getTime() + Math.floor(Math.random() * 100000)
 }
