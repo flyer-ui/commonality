@@ -22,13 +22,13 @@ export type TDate = {
 export function formatDate(
   format: string,
   data: Date | string | number | TDate
-) {
+):Date | string | number | TDate {
   if(_toString.call(data) === '[object Null]' || _toString.call(data) === '[object Undefined]'){
     return data
   }
   if (typeof format !== 'string') {
     error('format is not defined.')
-    return false
+    return data
   }
   const date: TDate = hasOwn(data as TDate, 'years')
     ? (data as TDate)

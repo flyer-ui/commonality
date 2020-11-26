@@ -1,15 +1,19 @@
 import { noop } from './common'
 import { warn } from './debug'
 
-// 可动态加载JS/CSS的加载器
-export function loader(paths: string | Array<string>, callback: Function) {
+/**
+ * 可动态加载JS/CSS的加载器
+ * @param paths 
+ * @param callback 
+ */
+export function loader(paths: string | Array<string>, callback: Function):void {
   if (typeof paths === 'string') {
     paths = [paths]
   }
 
   if (!Array.isArray(paths)) {
     warn('loader', 'The type of passed argument must be an Array or String.')
-    return false
+    return
   }
 
   const cache: object = {}
