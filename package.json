@@ -14,7 +14,9 @@
     "build:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "validate": "node ./node_modules/@flyer-ui/validate-commit-message",
     "commit": "git add . && git cz",
-    "publish:patch": "git checkout master && git merge dev -m 'chore: Merge branch ”dev“' && npm run clean && npm run test && npm run build && npm version patch -m 'chore: Upgrade to %s for reasons' && git push --follow-tags && npm publish && git checkout dev"
+    "publish:patch": "git checkout master && git merge dev -m 'chore: Merge branch ”dev“' && npm run clean && npm run test && npm run build && npm version patch -m 'chore: Upgrade to %s for reasons' && git push --follow-tags && npm publish && git checkout dev",
+    "publish:major": "git checkout master && git merge dev -m 'chore: Merge branch ”dev“' && npm run clean && npm run test && npm run build && npm version major -m 'chore: Upgrade to %s for reasons' && git push --follow-tags && npm publish && git checkout dev",
+    "publish:minor": "git checkout master && git merge dev -m 'chore: Merge branch ”dev“' && npm run clean && npm run test && npm run build && npm version minor -m 'chore: Upgrade to %s for reasons' && git push --follow-tags && npm publish && git checkout dev"
   },
   "keywords": [
     "commonality",

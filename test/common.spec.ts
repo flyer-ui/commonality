@@ -108,6 +108,7 @@ test('formatCurrency',done=>{
 
 test('randomNumber',done=>{
     for(let i=0;i<10000;i++){
+        // log(randomNumber().toString())
         const result = randomNumber() !== randomNumber()
         expect(result).toBe(true)
     }

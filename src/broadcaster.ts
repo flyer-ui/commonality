@@ -16,7 +16,7 @@ export const Broadcaster = (): IBroadcaster => {
 
   return {
     /** 订阅广播 */
-    subscribe: (channel: string, commit: Function) => {
+    subscribe: (channel: string, commit: Function):void => {
         if(hasOwn(store,channel)){
             store[channel].push(commit)
         }else{
@@ -25,7 +25,7 @@ export const Broadcaster = (): IBroadcaster => {
     },
 
     /** 广播消息 */
-    publish: (channel:string,data:Object) => {
+    publish: (channel:string,data:Object):void => {
         if(hasOwn(store,channel)){
             store[channel].forEach((commit:Function)=>{
                 commit.call(null,data)
