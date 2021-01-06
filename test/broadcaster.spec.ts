@@ -40,13 +40,13 @@ test('broadcaster 订阅多个频道,多个消息',()=>{
     broadcaster.publish('114','data')
     broadcaster.unsubscribe('114')
 
-    broadcaster.subscribe('115',(data)=>{
-        log('收到广播回来的数据115-1',data)
+    broadcaster.subscribe('115',(data1,data2)=>{
+        console.log('收到广播回来的数据115-1',data1,data2)
     })
-    broadcaster.subscribe('115',(data)=>{
-        log('收到广播回来的数据115-2',data)
+    broadcaster.subscribe('115',(data1,data2)=>{
+        console.log('收到广播回来的数据115-2',data1,data2)
     })
-    broadcaster.publish('115','data')
+    broadcaster.publish('115',['data1','data2'])
     broadcaster.unsubscribe('115')
     broadcaster.unsubscribe('115')
     broadcaster.unsubscribe('114')
