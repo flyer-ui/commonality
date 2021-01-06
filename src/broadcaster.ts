@@ -3,7 +3,7 @@ import {warn} from './debug'
 
 interface IBroadcaster {
   subscribe: (channel: string, commit: Function) => void
-  publish: (channel:string,data: Object) => void
+  publish: (channel:string,data: Object|Array<any>) => void
   unsubscribe: (channel: string) => boolean
 }
 
@@ -25,10 +25,16 @@ export const Broadcaster = (): IBroadcaster => {
     },
 
     /** 广播消息 */
-    publish: (channel:string,data:Object):void => {
+    publish: (channel:string,data:Object|Array<any>):void => {
         if(hasOwn(store,channel)){
+
+            if(!Array.isArray(data)){
+                data = [data]
+            }
+
             store[channel].forEach((commit:Function)=>{
-                commit.call(null,data)
+                //@ts-ignore
+                commit.call(null,...data)
             })
         }else{
             warn(`The '${channel}' is not found by the 'store'.`)
