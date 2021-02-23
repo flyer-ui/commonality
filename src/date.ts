@@ -76,8 +76,9 @@ export function fullTime(time: string | number): string {
   let value: number
   if (isString(time)) {
     value = parseInt(time as string)
+  }else{
+    value = time as number
   }
-  value = time as number
   return (value >= 10 ? value : '0' + value).toString()
 }
 
