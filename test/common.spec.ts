@@ -33,8 +33,7 @@ test('extend ?',()=>{
 })
 
 test('deepClone ?',()=>{
-    const result = {} 
-    deepClone(result,{
+    const result = deepClone({
         b:2,
         c:{
             c1:'2.1',
@@ -44,8 +43,8 @@ test('deepClone ?',()=>{
         e:[1,2,3,4]
     })
         
-    expect(hasOwn(result,'c')).toBe(true)
     log('result',JSON.stringify(result))
+    expect(hasOwn(result,'c')).toBe(true)
     expect(hasOwn(result['c'],'c1')).toBe(true)
     expect(hasOwn(result['c'],'c2')).toBe(true)
     expect(hasOwn(result['c'],'c2')).toBe(true)

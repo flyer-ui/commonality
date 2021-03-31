@@ -79,20 +79,21 @@ export function once(fn: Function): Function {
  * @param {any} target
  * @returns any
  */
-export function deepClone(target: object, source: object): object {
-  for (const key in source) {
-    const dataType = _toString.call(source[key])
-    if (dataType === '[object Object]') {
-      target[key] = {}
-      deepClone(target[key], source[key])
-    } else if (dataType === '[object Array]') {
-      target[key] = []
-      deepClone(target[key], source[key])
-    } else {
-      target[key] = source[key]
-    }
+export function deepClone(target:any):object{
+  if([null,undefined,NaN,false].includes(target)){
+    return target
   }
-  return target
+  if(typeof target !== "object" && typeof target !== 'function') {
+		//原始类型直接返回
+        return target;
+    }
+    var obj = Array.isArray(target) ? [] : {};
+    for(let i in target) {
+        if(target.hasOwnProperty(i)){
+          obj[i] = typeof target[i] === "object" ? deepClone(target[i]) : target[i];
+        }
+    }
+    return obj;
 }
 
 /**

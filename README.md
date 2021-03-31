@@ -84,7 +84,7 @@ function debounce(
 ```
 ~~6. 深度拷贝一个目标 `deepClone(target: object, source: object): object `<font color='red' size='2'>0.1.2版本后废除</font>~~  
 
-6. 深拷贝对象 `deepClone(target:object):object`<font color='green' size='2'> >0.1.3有效</font>
+6. 深拷贝对象 `deepClone(target:any):object`<font color='green' size='2'> >0.1.3有效</font>
 
 7. 确保只执行一次函数 `function once(fn: Function): Function `
 8. 混合对象里的属性到指定的对象上 `extend(to: object, _from: object): object`
