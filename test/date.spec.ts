@@ -4,7 +4,8 @@ import {
   formatDate,
   TDate,
   getDiffTime,
-  getDiffTimeDescription
+  getDiffTimeDescription,
+  getDiffDays
 } from '../src/date'
 
 test("fullTime ?", () => {
@@ -64,6 +65,15 @@ test('getDiffTime ?',done=>{
   expect(getDiffTime('','',7286)).toStrictEqual(
     { years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 7 }
   )
+  done()
+})
+
+test('getDiffDays ?',done=>{
+  expect(getDiffDays('2021-05-05','2021-05-04')).toEqual(1)
+  expect(getDiffDays(new Date('2021-05-05'),new Date('2021-05-04'))).toEqual(1)
+  expect(getDiffDays(new Date('2021-05-05'),'2021-05-04')).toEqual(1)
+  expect(getDiffDays('2021-05-05',new Date('2021-05-04'))).toEqual(1)
+  expect(getDiffDays(new Date('2021-05-24'),new Date('2021-05-11'))).toEqual(13)
   done()
 })
 
