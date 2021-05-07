@@ -186,3 +186,19 @@ export function getDiffTimeDescription(
 
   return format(template, ...items)
 }
+
+/** 将传参值转换成Date类型 */
+function convertToDate(param:string | Date):Date{
+  return typeof param === 'string' ? new Date(param) : param
+}
+
+/** 
+ * 获取两个时间差的天数 
+ * */
+export function getDiffDays (start:string | Date, end:string | Date):number {
+  const _start = convertToDate(start)
+  const _end = convertToDate(end)
+  const diffTimes = _start.getTime() - _end.getTime()
+  const days = diffTimes / (24 * 60 * 60 * 1000)
+  return days
+}
