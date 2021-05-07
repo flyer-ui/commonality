@@ -10,11 +10,17 @@ test('broadcaster 初始化成功',()=>{
 
 test('broadcaster 订阅一个频道',()=>{
     const broadcaster = Broadcaster()
-    broadcaster.subscribe('114',(data)=>{
-        log('收到广播回来的数据',data)
-    })
+    const commit = (data)=>{
+        log('收到广播回来的数据commit',data)
+    }
+    const commit1 = (data)=>{
+        log('收到广播回来的数据commit1',data)
+    }
+    broadcaster.subscribe('114',commit)
+    broadcaster.subscribe('114',commit1)
     broadcaster.publish('114','data')
-    broadcaster.unsubscribe('114')
+    broadcaster.unsubscribe('114',commit)
+    broadcaster.publish('114','data')
 })
 
 test('broadcaster 订阅一个频道,多个消息',()=>{
