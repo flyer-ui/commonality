@@ -43,14 +43,17 @@ broadcaster.unsubscribe('114')
 import {warn,log,error,config} from '@flyer-ui/commonality'
 config.moduleName='module'
 
-warn('name','msg') //[module.name] msg
-warn('msg') //[module] msg
+warn('name','msg',{other:'other'}) //[date][module.name] msg {other:'other'}
+warn('name','msg') //[date][module.name] msg
+warn('msg') //[date][module] msg
 
-log('name','msg') //[module.name] msg
-log('msg') //[module] msg
+log('name','msg','other') //[date][module.name] msg other
+log('name','msg') //[date][module.name] msg
+log('msg') //[date][module] msg
 
-error('name','msg') //[module.name] msg
-error('msg') //[module] msg
+error('name','msg',new Error('发生了未知错误')) //[date][module.name] msg ErrorInfo
+error('name','msg') //[date][module.name] msg
+error('msg') //[date][module] msg
 
 ```
 
