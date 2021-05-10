@@ -20,9 +20,9 @@ export const Broadcaster = (): IBroadcaster => {
     /** 订阅广播 */
     subscribe: (channel: string, commit: Function): void => {
       if (hasOwn(store, channel)) {
-        store[channel].push(commit)
+        store[channel].add(commit)
       } else {
-        store[channel] = [commit]
+        store[channel] = new Set([commit])
       }
     },
 
@@ -45,13 +45,7 @@ export const Broadcaster = (): IBroadcaster => {
     unsubscribe: (channel: string, commit?: Function): boolean => {
       if (hasOwn(store, channel)) {
         if (commit) {
-            const commits:Array<Function> = store[channel]
-            const index = commits.indexOf(commit)
-            if(index>-1){
-                commits.splice(index,1)
-            }else{
-                warn(`The ${commit} is not found by the 'store'.`)
-            }
+            store[channel].delete(commit)
         } else {
           delete store[channel]
         }
