@@ -1,8 +1,7 @@
 import { formatDate } from './date'
 export const config = {
-  moduleName: 'Flyer-UI',
+  moduleName: 'Flyer-UI'
 }
-
 
 /**
  * @description 日志通用方法
@@ -13,10 +12,10 @@ export const config = {
  * @param {string} [msg] 错误信息
  * @param {...any} rest  错误附带信息
  */
-function common(typeName:string,name:string,msg?:string,...rest:any){
+function common (typeName:string, name:string, msg?:string, ...rest:any) {
   if (console) {
     const args = Array.prototype.slice.call(arguments)
-    if(args.length === 0){
+    if (args.length === 0) {
       return
     }
     if (args.length === 1) {
@@ -30,7 +29,7 @@ function common(typeName:string,name:string,msg?:string,...rest:any){
         `[${formatDate('hh:MM:ss', new Date())}][${config.moduleName}.${name}]`,
         msg
       )
-    }else{
+    } else {
       console[typeName](
         `[${formatDate('hh:MM:ss', new Date())}][${config.moduleName}.${name}]`,
         msg,
@@ -45,8 +44,8 @@ function common(typeName:string,name:string,msg?:string,...rest:any){
  * @param {*} name
  * @param {*} msg
  */
-export const warn = function (name: string, msg?: string,...rest:any) {
-  common('warn',name,msg,rest)
+export const warn = function (name: string, msg?: string, ...rest:any) {
+  common('warn', name, msg, rest)
 }
 
 /**
@@ -54,8 +53,8 @@ export const warn = function (name: string, msg?: string,...rest:any) {
  * @param {*} name
  * @param {*} msg
  */
-export const error = function (name: string, msg?: string,...rest:any) {
-  common('error',name,msg,rest)
+export const error = function (name: string, msg?: string, ...rest:any) {
+  common('error', name, msg, rest)
 }
 
 /**
@@ -63,6 +62,6 @@ export const error = function (name: string, msg?: string,...rest:any) {
  * @param {*} name
  * @param {*} msg
  */
-export const log = function (name: string, msg?: string,...rest:any) {
-  common('log',name,msg,rest)
+export const log = function (name: string, msg?: string, ...rest:any) {
+  common('log', name, msg, rest)
 }

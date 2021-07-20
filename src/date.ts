@@ -1,5 +1,5 @@
 import { error } from './debug'
-import { isString, hasOwn, format,_toString } from './common'
+import { isString, hasOwn, format, _toString } from './common'
 
 export type TDate = {
   years: string | number
@@ -19,11 +19,11 @@ export type TDate = {
  * @param {(Date|string)} data
  * @returns
  */
-export function formatDate(
+export function formatDate (
   format: string,
   data: Date | string | number | TDate
 ):Date | string | number | TDate {
-  if(_toString.call(data) === '[object Null]' || _toString.call(data) === '[object Undefined]'){
+  if (_toString.call(data) === '[object Null]' || _toString.call(data) === '[object Undefined]') {
     return data
   }
   if (typeof format !== 'string') {
@@ -50,7 +50,7 @@ export function formatDate(
  * @param {(string|Date)} param
  * @returns {TDate}
  */
-export function getDate(param: string | number | Date): TDate {
+export function getDate (param: string | number | Date): TDate {
   const date: Date = (isString(param) || typeof param === 'number')
     ? new Date(param)
     : (param as Date) || new Date()
@@ -60,7 +60,7 @@ export function getDate(param: string | number | Date): TDate {
     days: date.getDate(),
     hours: date.getHours(),
     minutes: date.getMinutes(),
-    seconds: date.getSeconds(),
+    seconds: date.getSeconds()
   }
 }
 
@@ -72,11 +72,11 @@ export function getDate(param: string | number | Date): TDate {
  * @param {string} time
  * @returns {string}
  */
-export function fullTime(time: string | number): string {
+export function fullTime (time: string | number): string {
   let value: number
   if (isString(time)) {
     value = parseInt(time as string)
-  }else{
+  } else {
     value = time as number
   }
   return (value >= 10 ? value : '0' + value).toString()
@@ -91,7 +91,7 @@ export function fullTime(time: string | number): string {
  * @param {(string|Date)} end
  * @returns {string}
  */
-export function getDiffTime(start?: string | Date, end?: string | Date,diffTime:number = 0): TDate {
+export function getDiffTime (start?: string | Date, end?: string | Date, diffTime:number = 0): TDate {
   if (isString(start)) {
     start = new Date(start)
   }
@@ -105,7 +105,7 @@ export function getDiffTime(start?: string | Date, end?: string | Date,diffTime:
 
   const intervalMonth = 365.242199 / 12
 
-  if(diffTime === 0){
+  if (diffTime === 0) {
     diffTime = end.getTime() - start.getTime()
   }
 
@@ -136,7 +136,7 @@ export function getDiffTime(start?: string | Date, end?: string | Date,diffTime:
     days: diffTimeDays,
     hours: diffTimeHours,
     minutes: diffTimeMinutes,
-    seconds: diffTimeSeconds,
+    seconds: diffTimeSeconds
   }
 }
 
@@ -150,14 +150,14 @@ export function getDiffTime(start?: string | Date, end?: string | Date,diffTime:
  * @param {string} [template]
  * @returns {string}
  */
-export function getDiffTimeDescription(
+export function getDiffTimeDescription (
   start?: string | Date,
   end?: string | Date,
   diffTime:number = 0,
   num?: number,
   template?: string
 ): string | undefined {
-  const date: TDate = getDiffTime(start, end,diffTime)
+  const date: TDate = getDiffTime(start, end, diffTime)
   template = template || '{1}年{2}个月{3}日{4}小时{5}分{6}秒'
   const items: Array<number> = []
   Object.keys(date).forEach((key) => {
@@ -188,12 +188,12 @@ export function getDiffTimeDescription(
 }
 
 /** 将传参值转换成Date类型 */
-function convertToDate(param:string | Date):Date{
+function convertToDate (param:string | Date):Date {
   return typeof param === 'string' ? new Date(param) : param
 }
 
-/** 
- * 获取两个时间差的天数 
+/**
+ * 获取两个时间差的天数
  * */
 export function getDiffDays (start:string | Date, end:string | Date):number {
   const _start = convertToDate(start)

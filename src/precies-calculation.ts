@@ -15,7 +15,7 @@ export type TMethod = 'Addition' | 'Reduce' | 'Multiply' | 'Divide'
  * @param {TMethod} method //"Addition" | "Reduce" | "Multiply" | "Divide"
  * @returns
  */
-export function preciseCalculation(
+export function preciseCalculation (
   num1: number,
   num2: number,
   method: TMethod
@@ -47,7 +47,7 @@ export function preciseCalculation(
  * @param {number} [num2=0]
  * @returns
  */
-export function preciseAddition(num1: number = 0, num2: number = 0): number {
+export function preciseAddition (num1: number = 0, num2: number = 0): number {
   return preciseCalculation(num1, num2, 'Addition')
 }
 
@@ -59,7 +59,7 @@ export function preciseAddition(num1: number = 0, num2: number = 0): number {
  * @param {number} [num2=0]
  * @returns
  */
-export function preciseReduce(num1: number = 0, num2: number = 0): number {
+export function preciseReduce (num1: number = 0, num2: number = 0): number {
   return preciseCalculation(num1, num2, 'Reduce')
 }
 
@@ -71,7 +71,7 @@ export function preciseReduce(num1: number = 0, num2: number = 0): number {
  * @param {number} [num2=0]
  * @returns
  */
-export function preciseMultiply(num1: number = 0, num2: number = 0): number {
+export function preciseMultiply (num1: number = 0, num2: number = 0): number {
   return preciseCalculation(num1, num2, 'Multiply')
 }
 
@@ -83,6 +83,6 @@ export function preciseMultiply(num1: number = 0, num2: number = 0): number {
  * @param {number} [num2=0]
  * @returns
  */
-export function preciseDivide(num1: number = 0, num2: number = 0): number {
+export function preciseDivide (num1: number = 0, num2: number = 0): number {
   return preciseCalculation(num1, num2, 'Divide')
 }

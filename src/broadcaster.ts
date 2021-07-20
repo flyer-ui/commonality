@@ -45,13 +45,13 @@ export const Broadcaster = (): IBroadcaster => {
     unsubscribe: (channel: string, commit?: Function): boolean => {
       if (hasOwn(store, channel)) {
         if (commit) {
-            const commits:Array<Function> = store[channel]
-            const index = commits.indexOf(commit)
-            if(index>-1){
-                commits.splice(index,1)
-            }else{
-                warn(`The ${commit} is not found by the 'store'.`)
-            }
+          const commits:Array<Function> = store[channel]
+          const index = commits.indexOf(commit)
+          if (index > -1) {
+            commits.splice(index, 1)
+          } else {
+            warn(`The ${commit} is not found by the 'store'.`)
+          }
         } else {
           delete store[channel]
         }
@@ -59,6 +59,6 @@ export const Broadcaster = (): IBroadcaster => {
         warn(`The '${channel}' is not found by the 'store'.`)
       }
       return true
-    },
+    }
   }
 }

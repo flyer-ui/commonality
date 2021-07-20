@@ -12,7 +12,7 @@ export const emptyObject: Readonly<{}> = Object.freeze({})
  * @export
  * @param {any} args
  */
-export function noop(...rest: [any]): void {}
+export function noop (...rest: [any]): void {}
 
 /**
  * 判断对象是否是纯粹的对象类型
@@ -21,7 +21,7 @@ export function noop(...rest: [any]): void {}
  * @param {*} obj
  * @returns
  */
-export function isPlainObject(obj: object): boolean {
+export function isPlainObject (obj: object): boolean {
   if (_toString.call(obj) === '[object Object]') {
     return true
   }
@@ -36,7 +36,7 @@ export function isPlainObject(obj: object): boolean {
  * @param {String} key
  * @returns Boolean
  */
-export function hasOwn(obj: object, key: string | number | symbol): boolean {
+export function hasOwn (obj: object, key: string | number | symbol): boolean {
   return hasOwnProperty.call(obj, key)
 }
 
@@ -48,7 +48,7 @@ export function hasOwn(obj: object, key: string | number | symbol): boolean {
  * @param {Object} _from
  * @returns Object
  */
-export function extend(to: object, _from: object): object {
+export function extend (to: object, _from: object): object {
   for (const key in _from) {
     to[key] = _from[key]
   }
@@ -62,7 +62,7 @@ export function extend(to: object, _from: object): object {
  * @param {Function} fn
  * @returns Function
  */
-export function once(fn: Function): Function {
+export function once (fn: Function): Function {
   let called = false
   return function (...rest: [any]): void {
     if (!called) {
@@ -79,21 +79,21 @@ export function once(fn: Function): Function {
  * @param {any} target
  * @returns any
  */
-export function deepClone(target:any):object{
-  if([null,undefined,NaN,false].includes(target)){
+export function deepClone (target:any):object {
+  if ([null, undefined, NaN, false].includes(target)) {
     return target
   }
-  if(typeof target !== "object" && typeof target !== 'function') {
-		//原始类型直接返回
-        return target;
+  if (typeof target !== 'object' && typeof target !== 'function') {
+    // 原始类型直接返回
+    return target
+  }
+  const obj = Array.isArray(target) ? [] : {}
+  for (const i in target) {
+    if (hasOwn(target, i)) {
+      obj[i] = typeof target[i] === 'object' ? deepClone(target[i]) : target[i]
     }
-    var obj = Array.isArray(target) ? [] : {};
-    for(let i in target) {
-        if(target.hasOwnProperty(i)){
-          obj[i] = typeof target[i] === "object" ? deepClone(target[i]) : target[i];
-        }
-    }
-    return obj;
+  }
+  return obj
 }
 
 /**
@@ -105,7 +105,7 @@ export function deepClone(target:any):object{
  * @param {Boolean} immediately
  * @returns
  */
-export function debounce(
+export function debounce (
   event: Function = noop,
   wait: number = 50,
   immediately: boolean = false
@@ -136,7 +136,7 @@ export function debounce(
  * @param {any} obj
  * @returns
  */
-export function isString(obj: any): Boolean {
+export function isString (obj: any): Boolean {
   return typeof obj === 'string'
 }
 
@@ -147,7 +147,7 @@ export function isString(obj: any): Boolean {
  * @export
  * @returns {(string | undefined)}
  */
-export function format(...rest: Array<any>): string | undefined {
+export function format (...rest: Array<any>): string | undefined {
   const args: Array<any> = slice.call(rest)
   const len: number = args.length
   if (len > 1) {
@@ -172,22 +172,22 @@ export function format(...rest: Array<any>): string | undefined {
  * @param value 要进行货币格式化的数字（支持String类型和Number类型）
  * @param unit 格式化货币的单元，默认是中国货币符号￥
  */
-export function formatCurrency(value: string | number, unit: string = '￥'):string{
+export function formatCurrency (value: string | number, unit: string = '￥'):string {
   // 如果值的类型为undefined / null 直接返回空字符串。
-  if(value === undefined || value === null){
+  if (value === undefined || value === null) {
     return ''
   }
-  if(typeof value === 'string'){
+  if (typeof value === 'string') {
     value = parseFloat(value)
   }
   value = value.toFixed(2)
-  let [integer,decimal] = value.toString().split('.')
+  const [integer, decimal] = value.toString().split('.')
   return `${unit} ${integer}`.replace(/\B(?=(\d{3})+(?!\d))/gi, ',') + `.${decimal}`
 }
 
 /**
  * 可以生成并返回一个随机数的函数
  */
-export function randomNumber():number{
+export function randomNumber ():number {
   return new Date().getTime() + Math.floor(Math.random() * 100000)
 }

@@ -3,10 +3,10 @@ import { warn } from './debug'
 
 /**
  * 可动态加载JS/CSS的加载器
- * @param paths 
- * @param callback 
+ * @param paths
+ * @param callback
  */
-export function loader(paths: string | Array<string>, callback: Function):void {
+export function loader (paths: string | Array<string>, callback: Function):void {
   if (typeof paths === 'string') {
     paths = [paths]
   }
@@ -33,34 +33,34 @@ export function loader(paths: string | Array<string>, callback: Function):void {
     }
   })
 
-  function loadJS(path: string): void {
+  function loadJS (path: string): void {
     const script: HTMLScriptElement = document.createElement('script')
     script.src = path
     script.type = 'text/javascript'
     head.appendChild(script)
-    //@ts-ignore
+    // @ts-ignore
     script.onload = script.onreadystatechange = function () {
-      //@ts-ignore
+      // @ts-ignore
       script.onload = script.onreadystatechange = null
       completed()
     }
     cache[path] = true
   }
-  function loadCSS(path: string): void {
+  function loadCSS (path: string): void {
     const link: HTMLLinkElement = document.createElement('link')
     link.rel = 'stylesheet'
     link.type = 'text/css'
     link.href = path
     head.appendChild(link)
-    //@ts-ignore
+    // @ts-ignore
     link.onload = link.onreadystatechange = function () {
-      //@ts-ignore
+      // @ts-ignore
       link.onload = link.onreadystatechange = null
       completed()
     }
     cache[path] = true
   }
-  function completed(): void {
+  function completed (): void {
     index++
     if (index === paths.length) {
       callback.apply(null)

@@ -1,7 +1,7 @@
 
-import {warn} from './debug'
+import { warn } from './debug'
 
-export function on (target:HTMLElement, type:string, listener:EventListenerOrEventListenerObject, options:Object):void {
+export function on (target:HTMLElement, type:string, listener:any, options:Object):void {
   if (target && target.addEventListener) {
     target.addEventListener(type, listener, options)
   } else {
@@ -9,7 +9,7 @@ export function on (target:HTMLElement, type:string, listener:EventListenerOrEve
   }
 }
 
-export function off (target:HTMLElement, type:string, listener:EventListenerOrEventListenerObject, options:Object):void {
+export function off (target:HTMLElement, type:string, listener:any, options:Object):void {
   if (target && target.removeEventListener) {
     target.removeEventListener(type, listener, options)
   } else {
