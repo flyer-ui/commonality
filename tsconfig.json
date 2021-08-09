@@ -5,6 +5,7 @@
     "declaration":true,
     "sourceMap": true,
     "declarationMap": true,
-    "types": ["@types/jest"]
+    "module": "es2015",
+    "types": ["@types/jest","node"]
   }
 }

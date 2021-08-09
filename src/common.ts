@@ -80,7 +80,7 @@ export function once (fn: Function): Function {
  * @returns any
  */
 export function deepClone (target:any):object {
-  if ([null, undefined, NaN, false].includes(target)) {
+  if ([null, undefined, NaN, false].indexOf(target)) {
     return target
   }
   if (typeof target !== 'object' && typeof target !== 'function') {
@@ -110,6 +110,7 @@ export function debounce (
   wait: number = 50,
   immediately: boolean = false
 ): Function {
+  // @ts-ignore
   let timeout: NodeJS.Timeout | null = null
   let called: boolean = false
 

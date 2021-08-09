@@ -15,7 +15,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'no-undef': 'off',
-    'no-useless-call': 'off'
+    'no-undef': 'off'
   }
 }

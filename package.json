@@ -8,15 +8,17 @@
     "src"
   ],
   "scripts": {
+    "dev": "npm run test && npm run build",
     "test": "jest --no-cache",
-    "build": "rollup -c",
+    "build:dev": "npm run clean && NODE_ENV=development rollup -c",
+    "build:prod": "npm run clean && NODE_ENV=production rollup -c",
     "clean": "rm -rf lib",
-    "build:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "validate": "node ./node_modules/@flyer-ui/validate-commit-message",
-    "commit": "git add . && git cz",
-    "publish:patch": "git checkout master && git merge dev -m 'chore: Merge branch ”dev“' && npm run clean && npm run test && npm run build && npm version patch -m 'chore: Upgrade to %s for reasons' && git push --follow-tags && npm publish && git branch -D dev && git checkout -b dev",
-    "publish:major": "git checkout master && git merge dev -m 'chore: Merge branch ”dev“' && npm run clean && npm run test && npm run build && npm version major -m 'chore: Upgrade to %s for reasons' && git push --follow-tags && npm publish && git branch -D dev && git checkout -b dev",
-    "publish:minor": "git checkout master && git merge dev -m 'chore: Merge branch ”dev“' && npm run clean && npm run test && npm run build && npm version minor -m 'chore: Upgrade to %s for reasons' && git push --follow-tags && npm publish && git branch -D dev && git checkout -b dev"
+    "lint": "eslint --fix ./ --ignore-path .eslintignore --ext .ts",
+    "publish:pre": "npm run lint && git checkout master && git merge dev -m 'chore: Merge branch ”dev“' && npm run clean && npm run test && npm run build:prod",
+    "publish:post": "git push --follow-tags && npm publish && git branch -D dev && git checkout -b dev",
+    "publish:patch": "npm run publish:pre && npm version patch -m 'chore: Upgrade to %s for reasons' && npm run publish:post",
+    "publish:major": "npm run publish:pre && npm version major -m 'chore: Upgrade to %s for reasons' && npm run publish:post",
+    "publish:minor": "npm run publish:pre && npm version minor -m 'chore: Upgrade to %s for reasons' && npm run publish:post"
   },
   "keywords": [
     "commonality",
@@ -34,22 +36,23 @@
   "license": "MIT",
   "devDependencies": {
     "@flyer-ui/validate-commit-message": "^0.0.1",
-    "@types/jest": "^26.0.3",
-    "@typescript-eslint/eslint-plugin": "^4.28.4",
-    "@typescript-eslint/parser": "^4.28.4",
-    "cz-conventional-changelog": "^3.2.0",
-    "eslint": "^7.31.0",
+    "@types/jest": "^26.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "ghooks": "^2.0.4",
-    "jest": "^26.1.0",
-    "rollup": "^2.18.1",
+    "jest": "^27.0.6",
+    "rollup": "^2.56.1",
+    "rollup-plugin-dts": "^3.0.2",
     "rollup-plugin-typescript": "^1.0.1",
-    "ts-jest": "^26.1.1",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.5"
+    "ts-jest": "^27.0.4",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5"
   },
   "config": {
     "ghooks": {
