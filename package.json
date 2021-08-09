@@ -8,6 +8,9 @@
     "src"
   ],
   "scripts": {
+    "build:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "validate": "node ./node_modules/@flyer-ui/validate-commit-message",
+    "commit": "git add . && git cz",
     "dev": "npm run test && npm run build",
     "test": "jest --no-cache",
     "build:dev": "npm run clean && NODE_ENV=development rollup -c",
