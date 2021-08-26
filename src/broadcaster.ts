@@ -20,9 +20,9 @@ export const Broadcaster = (): IBroadcaster => {
     /** 订阅广播 */
     subscribe: (channel: string, commit: Function): void => {
       if (hasOwn(store, channel)) {
-        store[channel].push(commit)
+        store[channel].add(commit)
       } else {
-        store[channel] = [commit]
+        store[channel] = new Set([commit])
       }
     },
 
