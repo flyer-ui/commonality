@@ -3,6 +3,10 @@ export const config = {
   moduleName: 'Flyer-UI'
 }
 
+function genPrefix ():string {
+  return `[${formatDate('yyyy-MM-dd hh:mm:ss', new Date())}][${config.moduleName}]`
+}
+
 /**
  * @description 日志通用方法
  * @author pfzheng
@@ -10,29 +14,14 @@ export const config = {
  * @param {string} typeName 日志的类型
  * @param {...any} rest  附带信息
  */
-function common (typeName:string, name:string, msg?:string, ...rest:any) {
+function common (typeName:string, rest:Array<any>) {
   if (console) {
-    const args = Array.prototype.slice.call(arguments)
-    if (args.length === 0) {
-      return
-    }
-    if (args.length === 1) {
-      msg = name
-      console[typeName](
-        `[${formatDate('hh:MM:ss', new Date())}][${config.moduleName}]`,
-        rest[0]
-      )
+    if (rest.length === 1) {
+      console[typeName](`${genPrefix()}`, rest[0])
     } else if (rest.length === 2) {
-      console[typeName](
-        `[${formatDate('hh:MM:ss', new Date())}][${config.moduleName}.${rest[0]}]`,
-        rest[1]
-      )
+      console[typeName](`${genPrefix()}[${rest[0]}]`, rest[1])
     } else {
-      console[typeName](
-        `[${formatDate('hh:MM:ss', new Date())}][${config.moduleName}.${rest[0]}]`,
-        rest[1],
-        ...rest.slice(2)
-      )
+      console[typeName](`${genPrefix()}[${rest[0]}]`, rest[1], ...rest.slice(2))
     }
   }
 }
@@ -42,8 +31,8 @@ function common (typeName:string, name:string, msg?:string, ...rest:any) {
  * @param {*} name 第一个参数
  * @param {*} msg  第二个参数
  */
-export const warn = function (name: string, msg?: string, ...rest:any) {
-  common('warn', name, msg, rest)
+export const warn = function (...rest:any) {
+  common('warn', rest)
 }
 
 /**
@@ -51,8 +40,8 @@ export const warn = function (name: string, msg?: string, ...rest:any) {
  * @param {*} name 第一个参数
  * @param {*} msg  第二个参数
  */
-export const error = function (name: string, msg?: string, ...rest:any) {
-  common('error', name, msg, rest)
+export const error = function (...rest:any) {
+  common('error', rest)
 }
 
 /**
@@ -60,6 +49,6 @@ export const error = function (name: string, msg?: string, ...rest:any) {
  * @param {*} name 第一个参数
  * @param {*} msg  第二个参数
  */
-export const log = function (name: string, msg?: string, ...rest:any) {
-  common('log', name, msg, rest)
+export const log = function (...rest:any) {
+  common('log', rest)
 }
