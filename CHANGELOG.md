@@ -61,8 +61,8 @@
 
 ### Features
 
-* debug支持带多个参数。 ([d4eb6e8](https://github.com/flyer-ui/commonality/commit/d4eb6e82c651f7094a750175045d3c13b5c97a7f))
 * 增加获得两个时间间隔天数的函数。 ([92dcc66](https://github.com/flyer-ui/commonality/commit/92dcc6621b70412895a823c9c446256f10810815))
+* debug支持带多个参数。 ([d4eb6e8](https://github.com/flyer-ui/commonality/commit/d4eb6e82c651f7094a750175045d3c13b5c97a7f))
 
 
 
@@ -173,8 +173,8 @@
 
 ### Bug Fixes
 
-* rollup配置文件名称不对。 ([8e627c7](https://github.com/flyer-ui/commonality/commit/8e627c7f47e6b31c4bc49f1d2b710923f962daa0))
 * 修复debounce无效。 ([fb54b41](https://github.com/flyer-ui/commonality/commit/fb54b41426821ac0ea7a44b4f3b30fcd9fe9d995))
+* rollup配置文件名称不对。 ([8e627c7](https://github.com/flyer-ui/commonality/commit/8e627c7f47e6b31c4bc49f1d2b710923f962daa0))
 
 
 ### Features
@@ -197,8 +197,8 @@
 
 ### Features
 
-* debug增加时间显示。 ([0378b62](https://github.com/flyer-ui/commonality/commit/0378b62edcbc9bbbbc2e7935767ba015a634f763))
 * 增加formatCurrency函数。 ([5af07d5](https://github.com/flyer-ui/commonality/commit/5af07d5277a469a30ce4041daef044dc48b99c46))
+* debug增加时间显示。 ([0378b62](https://github.com/flyer-ui/commonality/commit/0378b62edcbc9bbbbc2e7935767ba015a634f763))
 
 
 
